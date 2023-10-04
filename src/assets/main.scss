@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box !important;
+}
+
+input:focus {
+  outline: none;
+}
+
+@layer utilities {
+  .active-bg-gradient{
+    @apply bg-gradient-to-r from-gradient-primary-100 from-5% to-primary-main-100 dark:from-gradient-primary-200 dark:to-primary-main-100 text-textCol-primary-200;
+    *{
+      @apply fill-textCol-primary-200;
+    }
+  }
+  .shadow-table{
+    box-shadow: 0 2px 10px rgba(58, 53, 65, 0.1);
+  }
+  *{
+    &:is(.dark){
+      .shadow-table{
+        box-shadow: 0px 2px 10px 0px rgba(19, 17, 32, 0.50);
+      }
+    }
+  }
+}
