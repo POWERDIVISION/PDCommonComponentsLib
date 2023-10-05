@@ -1,26 +1,40 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
-
-import type { ChipProps } from '../../../types/ChipTypes/ChipInterface';
-
-import { Chip } from './index';
+import type { Meta, StoryObj } from '@storybook/vue3'
+import type { ChipProps } from '../../../types/ChipTypes/ChipInterface'
+// components
+import { Chip } from './index'
+// utils
+import { config } from '@/utils/config'
 
 const meta = {
   title: 'atoms/Chip',
   component: Chip,
-  render: (args: ChipProps) => ({
+  render: (args) => ({
     components: { Chip },
     setup() {
-      return { args };
+      return { args }
     },
     template:
-      '<Chip :type="args.type" :variant="args.variant" :color="args.color" :size="args.size" :disabled="args.disabled" :icon="args.icon">Chip</Chip>',
+      '<Chip :type="args.type" :variant="args.variant" :color="args.color" :size="args.size" :disabled="args.disabled" :icon="args.icon">Chip</Chip>'
   }),
-
   tags: ['autodocs'],
-} as Meta<typeof Chip>;
+  argTypes: {
+    type: { control: 'select', options: ['filled', 'outlined', 'ghost'] },
+    variant: {
+      control: 'select',
+      options: ['default', 'removable', 'thumbnail', 'removable_thumbnail']
+    },
+    color: {
+      control: 'select',
+      options: ['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error']
+    },
+    size: { control: 'select', options: ['small', 'medium'] },
+    disabled: { control: 'boolean' },
+    icon: { control: 'select', options: config.icons }
+  }
+} as Meta<typeof Chip>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 export const Default = {
   args: {
     type: 'filled',
@@ -28,9 +42,9 @@ export const Default = {
     color: 'default',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const Removable = {
   args: {
     type: 'filled',
@@ -38,9 +52,9 @@ export const Removable = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const Thumbnail = {
   args: {
     type: 'filled',
@@ -48,9 +62,9 @@ export const Thumbnail = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const RemovableThumbnail = {
   args: {
     type: 'filled',
@@ -58,9 +72,9 @@ export const RemovableThumbnail = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const Outlined = {
   args: {
     type: 'outlined',
@@ -68,9 +82,9 @@ export const Outlined = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const OutlinedRemovableThumbnail = {
   args: {
     type: 'outlined',
@@ -78,9 +92,9 @@ export const OutlinedRemovableThumbnail = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const Ghost = {
   args: {
     type: 'ghost',
@@ -88,9 +102,9 @@ export const Ghost = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}
 export const GhostRemovableThumbnail = {
   args: {
     type: 'ghost',
@@ -98,6 +112,6 @@ export const GhostRemovableThumbnail = {
     color: 'primary',
     size: 'medium',
     disabled: false,
-    icon: 'plus',
-  },
-};
+    icon: 'plus'
+  }
+}

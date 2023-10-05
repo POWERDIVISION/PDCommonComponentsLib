@@ -1,1 +1,1 @@
-export { default as GroupButtons } from './GroupButtons.vue';
+export { default as BaseGroupButtons } from './BaseGroupButtons.vue'

@@ -1,7 +1,7 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx|vue)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -10,12 +10,11 @@ const config: StorybookConfig = {
     '@storybook/addon-styling',
   ],
   framework: {
-    name: '@storybook/vue3-vite',
-    options:{
-    }
+    name: "@storybook/vue3-vite",
+    options: {},
   },
   docs: {
-    autodocs: 'tag'
-  }
+    autodocs: "tag",
+  },
 }
 export default config

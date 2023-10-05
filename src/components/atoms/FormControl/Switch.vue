@@ -1,33 +1,33 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+import { computed } from 'vue'
 
-  const modelValue = defineModel();
+const modelValue = defineModel()
 
-  const {
-    color = 'primary',
-    label = '',
-    size = 'medium',
-  } = defineProps<{
-    label?: string;
-    color?: string;
-    size?: 'small' | 'medium';
-  }>();
+const {
+  color = 'primary',
+  label = '',
+  size = 'medium'
+} = defineProps<{
+  label?: string
+  color?: 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  size?: 'small' | 'medium'
+}>()
 
-  const colors = {
-    primary: 'peer-checked:bg-ghostCol-primary-100 peer-checked:after:!bg-primary',
-    secondary: 'peer-checked:bg-ghostCol-secondary-100 peer-checked:after:!bg-secondary',
-    success: 'peer-checked:bg-ghostCol-success-100 peer-checked:after:!bg-success',
-    error: 'peer-checked:bg-ghostCol-error-100 peer-checked:after:!bg-error',
-    warning: 'peer-checked:bg-ghostCol-warning-100 peer-checked:after:!bg-warning',
-    info: 'peer-checked:bg-ghostCol-info-100 peer-checked:after:!bg-info',
-  };
-  const switchBgColor = computed(() => colors[color]);
+const colors = {
+  primary: 'peer-checked:bg-ghostCol-primary-100 peer-checked:after:!bg-primary',
+  secondary: 'peer-checked:bg-ghostCol-secondary-100 peer-checked:after:!bg-secondary',
+  success: 'peer-checked:bg-ghostCol-success-100 peer-checked:after:!bg-success',
+  error: 'peer-checked:bg-ghostCol-error-100 peer-checked:after:!bg-error',
+  warning: 'peer-checked:bg-ghostCol-warning-100 peer-checked:after:!bg-warning',
+  info: 'peer-checked:bg-ghostCol-info-100 peer-checked:after:!bg-info'
+}
+const switchBgColor = computed(() => colors[color])
 
-  const sizes = {
-    small: 'w-[26px] h-[10px] after:h-[16px] after:w-[16px] after:top-[4px] after:left-3',
-    medium: 'w-[34px] h-[14px] after:h-[20px] after:w-[20px] after:top-[2px] after:left-3',
-  };
-  const switchSize = computed(() => sizes[size]);
+const sizes = {
+  small: 'w-[26px] h-[10px] after:h-[16px] after:w-[16px] after:top-[4px] after:left-3',
+  medium: 'w-[34px] h-[14px] after:h-[20px] after:w-[20px] after:top-[2px] after:left-3'
+}
+const switchSize = computed(() => sizes[size])
 </script>
 
 <template>
@@ -42,8 +42,8 @@
         switchBgColor,
         switchSize,
         {
-          'after:!bg-secondary': !modelValue,
-        },
+          'after:!bg-secondary': !modelValue
+        }
       ]"
     />
     <span v-if="label" class="">{{ label }}</span>

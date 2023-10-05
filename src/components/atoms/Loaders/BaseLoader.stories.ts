@@ -1,22 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 // components
-import { Menu } from './index'
+import { Loader } from './index'
 
 const meta = {
-  title: 'Molecules/Menu',
-  component: Menu,
+  title: 'atoms/Loader',
+  component: Loader,
   render: (args) => ({
-    components: { Menu },
+    components: { Loader },
     setup() {
       return { args }
     },
-    template: '<Menu />'
+    template: '<Loader :isWhite="args.isWhite"/>'
   }),
   tags: ['autodocs']
-} as Meta<typeof Menu>
+} as Meta<typeof Loader>
 
 export default meta
 type Story = StoryObj<typeof meta>
 export const Default = {
-  args: {}
+  args: {
+    isWhite: false
+  }
 }

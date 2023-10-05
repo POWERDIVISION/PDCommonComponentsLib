@@ -1,58 +1,58 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+import { computed } from 'vue'
+// Types
+import type { ModalMessageVariant, ModalType } from '../../../types/ModalTypes/ModalInterface'
+import type { BaseColor } from '@/types/BaseTypes/ColorTypes'
+// Composables
+import { useColorClasses } from '@/composables/useColorClasses'
+import { useIcon } from '@/composables/useIcon'
 
-  import type { ModalMessageVariant, ModalType } from '../../../types/ModalTypes/ModalInterface';
+const {
+  type = 'filled',
+  messageVariant = 'info',
+  message,
+  title = '',
+  withActions = false
+} = defineProps<{
+  type?: ModalType
+  messageVariant?: ModalMessageVariant
+  message: string
+  title?: string
+  withActions?: boolean
+}>()
 
-  import { useColorClasses } from '@/composables/useColorClasses';
-  import { useIcon } from '@/composables/useIcon';
+const modalIcon = computed(() => useIcon(messageVariant))
+const modalBgClass = computed(() => {
+  const textClass = useColorClasses({
+    color: messageVariant,
+    variant: 'text'
+  })
+  const bgClass = useColorClasses({ color: messageVariant, variant: 'background' })
+  const ghostBgClass = useColorClasses({
+    color: `custom-${messageVariant}` as BaseColor,
+    variant: 'background'
+  })
+  const borderClass = useColorClasses({ color: messageVariant, variant: 'border' })
 
-  const {
-    type = 'filled',
-    messageVariant = 'info',
-    message,
-    title = '',
-    withActions = false,
-  } = defineProps<{
-    type?: ModalType;
-    messageVariant?: string | ModalMessageVariant;
-    message: string;
-    title?: string;
-    withActions?: boolean;
-  }>();
-
-  const modalIcon = computed(() => useIcon(messageVariant));
-  const modalBgClass = computed(() => {
-    const textClass = useColorClasses({ color: messageVariant, variant: 'text' });
-    const bgClass = useColorClasses({ color: messageVariant, variant: 'background' });
-    const ghostBgClass = useColorClasses({
-      color: 'ghostCol-' + messageVariant,
-      variant: 'background',
-    });
-    const borderClass = useColorClasses({ color: messageVariant, variant: 'border' });
-    const ghostBorderClass = useColorClasses({
-      color: 'ghostCol-' + messageVariant,
-      variant: 'border',
-    });
-
-    switch (type) {
-      case 'filled':
-        return `${bgClass} text-white`;
-      case 'ghost':
-        return `${ghostBgClass} ${textClass}`;
-      case 'outlined':
-        return `border ${borderClass} ${textClass}`;
-      default:
-        return bgClass;
-    }
-  });
-  const modalIconFillClass = computed(() => {
-    const fillClass = useColorClasses({ color: messageVariant, variant: 'fill' });
-    if (type === 'filled') {
-      return 'fill-white';
-    } else {
-      return fillClass;
-    }
-  });
+  switch (type) {
+    case 'filled':
+      return `${bgClass} text-white`
+    case 'ghost':
+      return `${ghostBgClass} ${textClass}`
+    case 'outlined':
+      return `border ${borderClass} ${textClass}`
+    default:
+      return bgClass
+  }
+})
+const modalIconFillClass = computed(() => {
+  const fillClass = useColorClasses({ color: messageVariant, variant: 'fill' })
+  if (type === 'filled') {
+    return 'fill-white'
+  } else {
+    return fillClass
+  }
+})
 </script>
 
 <template>

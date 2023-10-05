@@ -18,7 +18,16 @@ import {
   Notification,
   Grow,
   Logout,
-} from '../components/atoms/SVG';
+  Download,
+  Mappack,
+  Solution,
+  DTC,
+  Minus,
+  Settings,
+  EyeOff,
+  Eye,
+  MenuOpenSVG,
+} from '../../src/components/atoms/SVG';
 
 type Icon = 'leftArrow' | 'star' | 'plus';
 export const useIcon = (icon: string) => {
@@ -42,7 +51,30 @@ export const useIcon = (icon: string) => {
     notification: Notification,
     grow: Grow,
     logout: Logout,
+    download: Download,
+    mappack: Mappack,
+    solution: Solution,
+    dtc: DTC,
+    minus: Minus,
+    settings: Settings,
+    eye: Eye,
+    eyeOff: EyeOff,
+    menuOpen: MenuOpenSVG,
   };
 
   return icons[icon as Icon] || icons.leftArrow;
+};
+
+export const useTypedIcon = (val: string) => {
+  const temp = val.toLowerCase();
+
+  if (temp.includes('dtc')) {
+    return useIcon('dtc');
+  } else if (temp.includes('mappack')) {
+    return useIcon('mappack');
+  } else if (temp.includes('solution')) {
+    return useIcon('solution');
+  } else {
+    return useIcon('dtc');
+  }
 };
