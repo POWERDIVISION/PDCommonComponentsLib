@@ -1,0 +1,27 @@
+export type BaseColor =
+    | 'default'
+    | 'other'
+    | 'disabled'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'error'
+    | 'white'
+    | 'black'
+    | 'custom-default'
+    | 'custom-primary'
+    | 'custom-secondary'
+    | 'custom-success'
+    | 'custom-info'
+    | 'custom-warning'
+    | 'custom-error'
+    | 'resting-primary'
+    | 'resting-secondary'
+    | 'resting-success'
+    | 'resting-info'
+    | 'resting-warning'
+    | 'resting-error';
+
+export type BaseColorVariant = 'background' | 'text' | 'border' | 'fill';

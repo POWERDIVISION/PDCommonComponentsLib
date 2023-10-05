@@ -1,0 +1,24 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+// components
+import { Loader } from './index'
+
+const meta = {
+  title: 'atoms/Loader',
+  component: Loader,
+  render: (args) => ({
+    components: { Loader },
+    setup() {
+      return { args }
+    },
+    template: '<Loader :isWhite="args.isWhite"/>'
+  }),
+  tags: ['autodocs']
+} as Meta<typeof Loader>
+
+export default meta
+type Story = StoryObj<typeof meta>
+export const Default = {
+  args: {
+    isWhite: false
+  }
+}
